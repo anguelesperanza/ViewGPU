@@ -4,6 +4,8 @@ import "core:fmt"
 import "vendor:wgpu"
 import "base:runtime"
 
+import "core:c/libc"
+
 state: struct {
 	ctx:            runtime.Context,
 
@@ -69,5 +71,9 @@ main :: proc() {
 	wgpu.DeviceRelease(device = state.device)
 	wgpu.AdapterRelease(adapter = state.adapter)
 	wgpu.InstanceRelease(instance = state.instance)
+
+	fmt.println("Press Enter to close")
+	libc.getchar()
+
 }
 
